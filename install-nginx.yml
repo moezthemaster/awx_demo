@@ -2,29 +2,20 @@
 - name: Install nginx
   hosts: all
   become: true
+  vars:
+    nginx_action: 'install'
+  pre_tasks:
+
+    - name: insure vars are well transmitted
+      assert:
+        that:
+          - nginx_action is defined and nginx_action != ""
   tasks:
+    - include_role:
+        name: role_install_nginx
+      vars:
+        state: "{{ nginx_action }}"
 
-    - name: Add epel-release repo
-      yum:
-        name: epel-release
-        state: present
-
-    - name: Install nginx
-      yum:
-        name: nginx
-        state: present
-
-    - name: Insert Index Page
-      copy:
-        src: ./files/index.html
-        dest: /usr/share/nginx/html/index.html
-
-    - name: Insert ansible logo
-      copy:
-        src: ./files/ansible-logo.jpg
-        dest: /usr/share/nginx/html/ansible-logo.jpg
-
-    - name: Start NGiNX
-      service:
-        name: nginx
-        state: started
+  post_tasks:
+    debug:
+      msg: "NGINX WAS SUCCESSFULLY {{ state | upper }}ED"
