@@ -16,5 +16,5 @@
         state: "{{ nginx_action }}"
 
   post_tasks:
-    debug:
-      msg: "NGINX WAS SUCCESSFULLY {{ state | upper }}ED"
+    - debug:
+        msg: "NGINX WAS SUCCESSFULLY {{ nginx_action | upper }}ED"
