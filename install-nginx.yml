@@ -20,8 +20,9 @@
 
     - name: check that nginx was well deployed
       uri:
-        url: http://127.0.0.1:8081
+        url: http://localhost:8081
         return_content: yes
+        validate_certs: no
       register: result
       #failed_when: "'Ansible' not in result.content"
       #when: nginx_action == 'install'
