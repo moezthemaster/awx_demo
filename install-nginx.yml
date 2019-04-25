@@ -24,8 +24,8 @@
         return_content: yes
         validate_certs: no
       register: result
-      #failed_when: "'Ansible' not in result.content"
-      #when: nginx_action == 'install'
-    - debug: var=result
+      failed_when: "'Ansible' not in result.content"
+      when: nginx_action == 'install'
+
     - debug:
         msg: "NGINX WAS SUCCESSFULLY {{ nginx_action | upper }}ED"
