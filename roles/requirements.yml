@@ -1,6 +1,6 @@
 ---
 - src: https://github.com/moezthemaster/role_install_nginx.git
-  version: master
+  version: v1.0.0
   name: role_install_nginx
   scm: git
 
