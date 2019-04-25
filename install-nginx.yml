@@ -8,7 +8,6 @@
         that:
           - nginx_action is defined and nginx_action != ""
         fail_msg: "variable 'nginx_action' must be 'install' or 'uninstall'"
-        when: nginx_action is defined and nginx_action == ""
 
   tasks:
     - include_role:
