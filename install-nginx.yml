@@ -16,5 +16,12 @@
         state: "{{ nginx_action }}"
 
   post_tasks:
+    - name: check that nginx was well deployed
+      uri:
+        url: 127.0.0.1:8081
+        return_content: yes
+      register: result
+      failed_when: "'Ansible' not in result.content"
+
     - debug:
         msg: "NGINX WAS SUCCESSFULLY {{ nginx_action | upper }}ED"
