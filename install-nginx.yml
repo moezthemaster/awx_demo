@@ -28,4 +28,4 @@
       when: nginx_action == 'install'
 
     - debug:
-        msg: "NGINX WAS SUCCESSFULLY {{ nginx_action | upper }}ED"
+        msg: "NGINX WAS SUCCESSFULLY {{ nginx_action | upper | join(ED)}}"
