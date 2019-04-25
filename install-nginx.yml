@@ -1,6 +1,5 @@
 ---
-- name: Install nginx
-  hosts: all
+- hosts: all
   become: true
   vars:
     nginx_action: 'install'
