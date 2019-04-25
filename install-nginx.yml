@@ -10,18 +10,21 @@
         fail_msg: "variable 'nginx_action' must be 'install' or 'uninstall'"
 
   tasks:
+
     - include_role:
         name: role_install_nginx
       vars:
         state: "{{ nginx_action }}"
 
   post_tasks:
+
     - name: check that nginx was well deployed
       uri:
         url: 127.0.0.1:8081
         return_content: yes
       register: result
-      failed_when: "'Ansible' not in result.content"
-
+      #failed_when: "'Ansible' not in result.content"
+      #when: nginx_action == 'install'
+    - debug: var=result
     - debug:
         msg: "NGINX WAS SUCCESSFULLY {{ nginx_action | upper }}ED"
