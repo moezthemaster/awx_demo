@@ -7,7 +7,7 @@
       assert:
         that:
           - nginx_action is defined and nginx_action != ""
-      fail_msg: "'nginx_action' must be 'install' or 'uninstall'"
+        fail_msg: "'nginx_action' must be 'install' or 'uninstall'"
   tasks:
     - include_role:
         name: role_install_nginx
