@@ -1,7 +1,7 @@
 ---
 - hosts: all
-  tasks:
   become: true
+  tasks:
     - name: test some shell
       shell: |
         service nginx status
