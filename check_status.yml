@@ -3,7 +3,8 @@
   become: true
   tasks:
     - name: test some shell
-      shell: |
-        service nginx status
+      service:
+        name: nginx
+        enabled: yes
       register: result
     - debug: var=result
