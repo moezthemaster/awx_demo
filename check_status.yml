@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+  become: true
+    - name: test some shell
+      shell: |
+        service nginx status
+      register: result
+    - debug: var=result
